@@ -3,10 +3,8 @@ import axios from 'axios'
 import { useUserStore } from '@/stores/index.js'
 // 实例化Pinia数据
 const userStore = useUserStore()
-import { ElMessage } from 'element-plus'
 // 引入路由
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import router from '@/router'
 const baseURL = 'http://big-event-vue-api-t.itheima.net'
 //  http://big-event-vue-api-t.itheima.net
 const instance = axios.create({
@@ -32,7 +30,7 @@ instance.interceptors.response.use(
     // TODO 4. 摘取核心响应数据
     if (res.data.code === 0) {
       // 成功
-      return res
+      return res.data
     }
     // 失败
     ElMessage({ message: res.data.message || '服务异常', type: 'error' })
