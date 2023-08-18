@@ -1,8 +1,7 @@
 import axios from 'axios'
 // 引入 pinia
 import { useUserStore } from '@/stores/index.js'
-// 实例化Pinia数据
-const userStore = useUserStore()
+
 // 引入路由
 import router from '@/router'
 const baseURL = 'http://big-event-vue-api-t.itheima.net'
@@ -16,6 +15,8 @@ const instance = axios.create({
 instance.interceptors.request.use(
   (config) => {
     // TODO 2. 携带token
+    // 实例化Pinia数据
+    const userStore = useUserStore()
     if (userStore.token) {
       config.headers.Authorization = userStore.token
     }

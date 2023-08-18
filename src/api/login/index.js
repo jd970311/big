@@ -16,3 +16,12 @@ export const reg = (data) => {
     data
   })
 }
+
+// 获取用户信息 /my/userinfo
+export const getUserinfo = (data) => {
+  return request({
+    url: '/my/userinfo',
+    method: 'get',
+    data
+  })
+}

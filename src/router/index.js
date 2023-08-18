@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import { useUserStore } from '@/stores'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -25,7 +25,7 @@ const router = createRouter({
         {
           path: 'article/channel',
           name: 'channel',
-          component: () => import('@/views/article/channel/index.')
+          component: () => import('@/views/article/channel.vue')
         },
         // 个人中心
         {
@@ -49,5 +49,9 @@ const router = createRouter({
     }
   ]
 })
-
+router.beforeEach((to) => {
+  // 判断有无token，没有token回到 /login 页面
+  const userStore = useUserStore()
+  if (!userStore.token && to.path !== '/login') return '/login'
+})
 export default router

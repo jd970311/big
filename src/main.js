@@ -3,7 +3,7 @@ import pinia from './stores'
 import App from './App.vue'
 import router from './router'
 import '@/assets/main.scss'
-// 如果您正在使用CDN引入，请删除下面一行。
+// 引入图标
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 const app = createApp(App)
