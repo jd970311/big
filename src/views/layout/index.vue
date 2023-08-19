@@ -1,10 +1,12 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
 import leftAside from './leftAside.vue'
 import { useUserStore } from '@/stores/index.js'
-const userStore = useUserStore()
-const { nickname, username, user_pic } = userStore.userInfo
+import router from '@/router/index.js'
 
+const userStore = useUserStore()
+const { userInfo } = storeToRefs(userStore)
 const circleUrl = ref(
   'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
 )
@@ -16,13 +18,13 @@ onMounted(() => {
 const handleCommand = (val) => {
   switch (val) {
     case 'a':
-      console.log(val, '1111')
+      router.push('/user')
       break
     case 'b':
-      console.log(val, '2222')
+      router.push('/user/avatar')
       break
     case 'c':
-      console.log(val, '3333')
+      router.push('/user/password')
       break
     case 'd':
       userStore.logOut()
@@ -44,12 +46,12 @@ const handleCommand = (val) => {
           <div>
             登录账户:
             <strong>
-              {{ nickname || username }}
+              {{ userInfo.nickname || userInfo.username }}
             </strong>
           </div>
           <el-dropdown @command="handleCommand">
             <span class="el-dropdown-link">
-              <el-avatar :size="50" :src="user_pic || circleUrl" />
+              <el-avatar :size="50" :src="userInfo.user_pic || circleUrl" />
               <el-icon class="el-icon--right">
                 <arrow-down />
               </el-icon>

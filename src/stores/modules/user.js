@@ -28,6 +28,7 @@ export const useUserStore = defineStore(
     // 定义退出登录的方法
     const logOut = () => {
       removeToken()
+      userInfo.value = {}
       router.push('/login')
     }
     // 把变量和方法导出去 （getters）
