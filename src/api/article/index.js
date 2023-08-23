@@ -41,3 +41,49 @@ export const getCateInfo = (data) => {
     params: data
   })
 }
+
+// 文章管理请求
+
+// /my/article/list 文章列表
+export const articleList = (data) => {
+  return request({
+    url: '/my/article/list',
+    method: 'get',
+    params: data
+  })
+}
+
+// /my/article/info  更新-文章详情
+export const articleInfo = (data) => {
+  return request({
+    url: '/my/article/info',
+    method: 'PUT',
+    data
+  })
+}
+
+// 发布-文章 /my/article/add
+export const addInfo = (data) => {
+  return request({
+    url: '/my/article/add',
+    method: 'post',
+    data
+  })
+}
+// 获取-文章详情 /my/article/info
+export const getInfo = (data) => {
+  return request({
+    url: '/my/article/info',
+    method: 'GET',
+    params: data
+  })
+}
+
+// 删除-文章 /my/article/info
+export const deleteInfo = (data) => {
+  return request({
+    url: '/my/article/info',
+    method: 'DELETE',
+    params: data
+  })
+}

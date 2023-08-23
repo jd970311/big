@@ -31,6 +31,7 @@ instance.interceptors.response.use(
     // TODO 4. 摘取核心响应数据
     if (res.data.code === 0) {
       // 成功
+      ElMessage(res.data.message)
       return res.data
     }
     // 失败

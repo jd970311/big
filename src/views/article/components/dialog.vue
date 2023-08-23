@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, defineExpose } from 'vue'
+import { ref } from 'vue'
 import { cateAdd, editCateInfo } from '@/api/article/index.js'
 import { ElMessage } from 'element-plus'
 const ruleForm = ref({
